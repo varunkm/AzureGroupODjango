@@ -1,0 +1,37 @@
+
+{% extends "app/base.html" %}
+    {%  block header %}
+        <li><a href="/logout/">Logout</a></li>
+    {% endblock header %}
+   {% block content %}
+      <div class="container">
+         {% if citation_list %}
+            <h1>Your Citations</h1>
+            <table class="table">
+            <thead>
+               <tr>
+                  <th>Title</th>
+                  <th>Link</th>
+                  <th>Notes</th>
+                  <th></th>
+                  <th></th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for citation in citation_list %}
+                  <tr>
+                     <td>{{ citation.title }} </td>
+                     <td><a href="{{ citation.link }}/">{{ citation.link }}</a></td>
+                     <td>{{ citation.notes }} </td>
+                     <td><a href="/edit/{{ citation.id }}">edit</a></td>
+                     <td><a href="/delete/{{ citation.id }}">delete</a></td>
+                  </tr>
+               {% endfor %}
+            </tbody>
+           </table>
+         {% else %}
+           <p>No citations found.</p>
+         {% endif %}
+         <a href="/new/">add</a>
+      </div>
+   {% endblock content %}
