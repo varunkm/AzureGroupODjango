@@ -1,14 +1,16 @@
 """
 Definition of urls for DjangoApp.
 """
-
-from datetime import datetime
+from django.views.generic import CreateView
 from django.conf.urls import url
-from app.forms import BootstrapAuthenticationForm
-from app.views import *
+from django.contrib import admin
 from app import views
-from app.models import *
-from django.contrib.auth.views import *
+from django.contrib.auth import views as auth_views
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import login
+from django.contrib.auth.views import logout
 
 
 # Uncomment the next lines to enable the admin:
